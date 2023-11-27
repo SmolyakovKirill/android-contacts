@@ -1,10 +1,11 @@
 package ru.yandex.practicum.contacts.presentation.filter.model;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 
 import ru.yandex.practicum.contacts.presentation.base.ListDiffInterface;
 
-public class FilterContactTypeUi implements ListDiffInterface {
+public class FilterContactTypeUi implements ListDiffInterface<FilterContactTypeUi>{
 
     private final FilterContactType contactType;
     private final boolean selected;
@@ -23,8 +24,8 @@ public class FilterContactTypeUi implements ListDiffInterface {
     }
 
     @Override
-    public boolean theSameAs(Object object) {
-        return this.contactType == object;
+    public <T> boolean theSameAs(T object) {
+        return this.getContactType() == object;
     }
 
     @Override
